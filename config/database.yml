@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  username: username
+  password: password
+  template: template0
+
+development:
+  <<: *default
+  database: DevcampPortfolio_development
