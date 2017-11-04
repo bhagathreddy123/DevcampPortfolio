@@ -9,7 +9,7 @@ class PortfoliosController < ApplicationController
 	end
 
 	def create
-		@portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+		@portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :sub_title, :body))
 		if @portfolio_item.save
 			redirect_to portfolios_path, notice: 'Your portfolio item is now live.' 
 		else
@@ -23,12 +23,16 @@ class PortfoliosController < ApplicationController
 
 	def update
 		@portfolio_item = Portfolio.find(params[:id]) 
-		if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
+		if @portfolio_item.update(params.require(:portfolio).permit(:title, :sub_title, :body))
 			redirect_to portfolios_path, notice: 'Your portfolio item is now live.' 
 		else
 			render :edit 
 		end
 	end
+
+	def angular
+	    @angular_portfolio_items = Portfolio.angular
+    end
 
 	def show 
 		@portfolio_item = Portfolio.find(params[:id]) 
