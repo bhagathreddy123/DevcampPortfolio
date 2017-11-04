@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   # GET /blogs
   # GET /blogs.json
@@ -45,6 +45,16 @@ class BlogsController < ApplicationController
         format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
+  end 
+
+  def toggle_status
+    puts "you are here you are working"
+    if @blog.published?
+      @blog.draft!
+    elsif @blog.draft?
+      @blog.published!
+    end
+    redirect_to blogs_path
   end
 
   # DELETE /blogs/1
