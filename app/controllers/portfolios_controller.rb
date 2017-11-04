@@ -6,10 +6,11 @@ class PortfoliosController < ApplicationController
 
 	def new
 		@portfolio_item = Portfolio.new
+		3.times { @portfolio_item.technologies.build }
 	end
 
 	def create
-		@portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :sub_title, :body))
+		@portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :sub_title, :body, technologies_attributes: [:name]))
 		if @portfolio_item.save
 			redirect_to portfolios_path, notice: 'Your portfolio item is now live.' 
 		else
