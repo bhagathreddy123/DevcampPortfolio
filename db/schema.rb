@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104143501) do
+ActiveRecord::Schema.define(version: 20171104162411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20171104143501) do
     t.decimal  "percent_utilized", precision: 12, scale: 5
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.text     "badge"
   end
 
   create_table "topics", force: :cascade do |t|
