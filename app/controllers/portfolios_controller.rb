@@ -10,7 +10,7 @@ class PortfoliosController < ApplicationController
 	end
 
 	def create
-		@portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :sub_title, :body, technologies_attributes: [:name]))
+		@portfolio_item = Portfolio.new(portfolio_params)
 		if @portfolio_item.save
 			redirect_to portfolios_path, notice: 'Your portfolio item is now live.' 
 		else
@@ -43,5 +43,11 @@ class PortfoliosController < ApplicationController
 		@portfolio_item = Portfolio.find(params[:id])
 		@portfolio_item.destroy
 		redirect_to portfolios_path, notice: 'Your Portfolio item is deleted'
+	end
+
+	private
+
+	def portfolio_params
+		params.require(:portfolio).permit(:title, :sub_title, :body, technologies_attributes: [:name])
 	end
 end
