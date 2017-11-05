@@ -3,8 +3,8 @@
 <head>
 	<title><%= @page_title %></title>
 	<%= csrf_meta_tags %>
-<meta name="keywords" content="<%= @set_keywords%>" />
-    <%= stylesheet_link_tag    'blogs', media: 'all', 'data-turbolinks-track': 'reload' %> 
+	<meta name="keywords" content="<%= @set_keywords%>" />
+	<%= stylesheet_link_tag    'blogs', media: 'all', 'data-turbolinks-track': 'reload' %> 
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 </head>
@@ -14,12 +14,7 @@
 	<p class="alert"><%= alert %></p>
 
 	<%= render "shared/nav", location: 'bottom' %>
-	 <% if current_user.is_a?(User) %>
-	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
-	<% else %>
-	<%= link_to "Register", new_user_registration_path %>
-	<%= link_to "Login", new_user_session_path %>
-	<% end %>
+	<%= login_helper %>
 	<%= yield %>
 	<% if session[:source] %>
 	<p>Thanks for visiting me from <%= session[:source] %></p>
