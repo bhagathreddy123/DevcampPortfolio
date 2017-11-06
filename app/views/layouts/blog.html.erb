@@ -4,7 +4,7 @@
 	<title><%= @page_title %></title>
 	<%= csrf_meta_tags %>
 	<meta name="keywords" content="<%= @set_keywords%>" />
-	<%= stylesheet_link_tag    'blogs', media: 'all', 'data-turbolinks-track': 'reload' %> 
+	<%= stylesheet_link_tag    'blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 </head>
@@ -16,7 +16,7 @@
 	<%= render "shared/nav", location: 'bottom' %>
 	<%= login_helper %>
 	<%= yield %>
-	<%= @copyright %>
+<%= copyright_generator %>
 	<%= source_helper("blog") %>
 </body>
 </html>

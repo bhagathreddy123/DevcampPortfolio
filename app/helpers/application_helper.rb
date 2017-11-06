@@ -8,7 +8,7 @@ module ApplicationHelper
 			( link_to "Login", new_user_session_path)
 
 		end
-	end 
+	end
 
 	def source_helper(layout_name)
 		if session[:source]
@@ -16,4 +16,9 @@ module ApplicationHelper
 			content_tag(:p, greeting, class: "source-greeting")
 		end
 	end
+
+	def copyright_generator
+		 CustomViewTool::Renderer.copyright 'bhagath', 'All rights reserved'
+	end
+
 end
